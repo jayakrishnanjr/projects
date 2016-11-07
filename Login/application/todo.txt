@@ -1,0 +1,24 @@
+include confirm password
+show all error messages as $data
+insert - if condition and error mesage
+exception
+
+activaion email
+
+
+$subject="Action"
+$md5(currentime+asdfdasf)
+db save
+$message= "uasdfadfsafaffsfs  sadfdsa."
+mail($to, $subject)
+
+
+aviction null...
+
+check if session is set AND is session type is user
+
+usertype authorization
+
+change session check in all places.. and instead use redirect
+	
+

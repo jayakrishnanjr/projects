@@ -15,6 +15,7 @@
     </head>
     <body>
     	<div class="container">
+
     		<div class="row text-center">
     	        <div class="col-sm-6 col-sm-offset-3">
     	        <br><br> <h2 style="color:#0fad00">Success</h2>
@@ -22,7 +23,7 @@
     	        <h3>success..Ta Da</h3>
     	        <p style="font-size:20px;color:#5C5C5C;">Thank you for signup
     			Please go to home page now and login.</p>
-    	        <a href="<?php echo base_url();?>index.php/home" class="btn btn-success" >     Log in      </a>
+    	        <a href="<?php echo base_url();?>index.php/home" class="btn btn-success" >Log in</a>
     	    <br><br>
     	        </div>
     	        

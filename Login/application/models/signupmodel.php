@@ -4,7 +4,7 @@
 */
 class Signupmodel extends CI_Model
 {
-/**
+	/**
 	*function to insert values into database
     *@param void
     *@return null
@@ -14,6 +14,7 @@ class Signupmodel extends CI_Model
 	    $result=$this->db->insert('user',$datas);
 	    return $result;
 	}
+
 	/**
 	*function to check if email exist or not in database
     *@param void
@@ -23,6 +24,7 @@ class Signupmodel extends CI_Model
 	{
 	    $this->db->where('username',$username);
 	    $query = $this->db->get('user');
+	    
 	    if ($query->num_rows() > 0){
 	        return true;
 	    }

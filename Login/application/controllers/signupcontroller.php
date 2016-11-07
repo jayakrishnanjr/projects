@@ -27,14 +27,12 @@ class Signupcontroller extends CI_Controller
                         );
                         $this->load->model('signupmodel');
                         /*check if email exist*/ 
-                        if ($this->signupmodel->checkifEmailExists($credentials['username'])) 
-                        {
+                        if ($this->signupmodel->checkifEmailExists($credentials['username'])) {
                             $this->load->view('signup');  
                         }
-                        else
-                        {
-                        $this->signupmodel->insertData($credentials);
-                        $this->load->view('success');
+                        else{
+                            $this->signupmodel->insertData($credentials);
+                            $this->load->view('success');
                         }
                     }
                     else{
