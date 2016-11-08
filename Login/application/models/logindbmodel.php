@@ -1,6 +1,9 @@
 <?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
-* class for login 
+*class for login
+*It include function for check if email exist,checking password is correct,email activation,updatas
+*and check if account activated or not
 */
 class Logindbmodel extends CI_Model
 {
@@ -10,42 +13,107 @@ class Logindbmodel extends CI_Model
     *@param void
     *@return null
 	**/
-	public function checkifEmailExists($username)
+	public function checkifEmailExists($email)
 	{
-	    $this->db->where('username',$username);
+	    $this->db->where('Email',$email);
 	    $query = $this->db->get('user');
+	    
 	    if ($query->num_rows() > 0){
-
 	        return true;
 	    }
 	    else{
 	        return false;
 	    }
 	}
+	
 	/**
 	*function to check password match
-    *@param void
+    *@param email,password
     *@return null
 	**/
-	public function checkPassword($username,$password)
+	public function checkPassword($email,$password)
 	{
-	   $this->db->select('password');
-	   $this->db->where('username',$username);
+	   $this->db->select('Password');
+	   $this->db->where('Email',$email);
 	   $query = $this->db->get('user');
-	   foreach ($query->result() as $row)
-		{
-		    $pass=$row->password;
+	   foreach ($query->result() as $row){
+		    $pass=$row->Password;
 		}
-		if($password===$pass)
-		{
+		if($password===$pass){
 			return true;
 		}	 
-		else
-		{
+		else{
 			return false;
 		}	
-	}			
+	}
+
+	/**
+	*function to  email activation
+    *@param $datas
+    *@return void
+	**/
+	public function emailActivation($datas)
+	{
+		if ($this->checkifEmailExists($datas['mail'])) {
+			$mail = $datas['mail'];
+			$emailstat = $datas['id'];		
+		    $this->db->select('Activationcode');
+		    $this->db->where('Email',$mail);
+		    $query = $this->db->get('user');
+		    var_dump("JK");
+		    foreach ($query->result() as $row){
+			    $stat=$row->Activationcode;
+			}
+			if($emailstat==$stat){
+				if ($this->updateDatas($datas)) {
+					return true;
+				}
+				else{
+					return false;
+				}	
+			}	 
+			else{
+				return false;
+			}
+		}
+		else{
+			return false;
+		}		
+	}
+
+	/**
+	*function to  update activation code after verification
+    *@param $datas
+    *@return void
+	**/
+	public function updateDatas($datas)
+	{
+		$data=array('Email'=>$datas['mail'],'Activationcode'=>null);
+		$this->db->where('Email',$datas['mail']);
+		$query=$this->db->update('user',$data);
+		return $query;	
+	}
+
+	/**
+	*function to  checkifaccount activated or not
+    *@param $datas
+    *@return void
+	**/
+	public function checkifAccountActivated($credentials)
+	{
+		$this->db->select('Activationcode');
+	   	$this->db->where('Email',$credentials['Email']);
+	   	$query = $this->db->get('user');
+	   	foreach ($query->result() as $user)
+	   	{
+	   	        $val=$user->Activationcode; 
+	   	}
+	   	if (!empty($val)) {
+	   		return false;	
+	   	}
+	   	else{
+	   		return true;
+	   	}	
+	}				
 }
-
-
 ?>

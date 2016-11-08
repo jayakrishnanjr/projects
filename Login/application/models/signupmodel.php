@@ -1,4 +1,5 @@
 <?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
 * class for inserting sign up data
 */
@@ -20,9 +21,9 @@ class Signupmodel extends CI_Model
     *@param void
     *@return null
 	**/
-	public function checkifEmailExists($username)
+	public function checkifEmailExists($email)
 	{
-	    $this->db->where('username',$username);
+	    $this->db->where('Email',$email);
 	    $query = $this->db->get('user');
 	    
 	    if ($query->num_rows() > 0){
@@ -33,6 +34,4 @@ class Signupmodel extends CI_Model
 	    }
 	}			
 }
-
-
 ?>

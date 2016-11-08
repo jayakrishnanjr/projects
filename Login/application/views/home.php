@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>profile</title>
+        <title>home</title>
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -206,7 +206,7 @@
               </div>
 
               <div class="inner cover">
-                <h1 class="cover-heading">Full screen background cover page.</h1>
+                <h1 class="cover-heading">Home</h1>
 
                 <p class="lead">Cover is a one-page template for building simple and
                 beautiful home pages. Download, edit the text, and add your own

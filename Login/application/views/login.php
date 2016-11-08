@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
     <head>
         <title>login</title>
@@ -19,52 +19,33 @@
             #ahref{
                 padding-left: 150px;
                 padding-right: 150px;
-            }    
+            }
+            nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
+            nav.navbar-findcond a { color: #f14444; }f; }    
         </style>
-         <script type="text/javascript">
-        //         $(document).ready(function()
-        //         {
-        //             $("#submit").click(function(event)
-        //             {
-        //                 event.preventDefault();
-        //                 var email = $("#email").val();
-        //                 var password = $("#password").val();
-        //                 // ajax
-        //                 $.ajax(
-        //                 {
-        //                     type: "POST",
-        //                     url: "<?php echo base_url(); ?>" + "index.php/ajaxlogincontroller/showProfile",
-        //                     // dataType- return data type from controller
-        //                     data: { name:email,pass:password },
-        //                     success: function(result)
-        //                     {
-        //                         // .html for html display
-        //                         $("#row5").html(result);
-        //                     }
-        //                     // error: function()
-        //                     // {
-        //                     //     alert("Error");
-        //                     // }
-        //                 });
-        //             });
-        //         });
-          </script>
     </head>
     <body>
+        <nav class="navbar navbar-findcond navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">example.com</a>
+                </div>
+            </div>
+        </nav>
         <div class="container">
             <!-- Login block -->
             <div class="row login_block form-group">
                 <div class="col-md-4 col-md-offset-4">
-                    <form method="POST" action="<?php echo base_url();?>index.php/profile">
-                        <!-- Username input box -->
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username" 
-                            placeholder="Username"  id="email">
+                    <form method="POST" action="<?php echo base_url();?>index.php/home">
+                        <!-- email input box -->
+                        <label>email</label>
+                        <input type="text" class="form-control" name="email" 
+                            placeholder="email"  id="email" value="<?php echo $this->session->userdata('email');?>" required maxlength="55" data-minlength="7">
                         <br>
                         <!-- Password input box -->
                         <label>Password</label>
                         <input type="password" class="form-control" name="password" 
-                            placeholder="Password"  id="password">
+                            placeholder="Password"  id="password" required maxlength="20" data-minlength="8">
                         <br>
                         <!-- Button -->
                         <input class="btn btn-success btn-block" type="submit" id="submit" value="Login">
@@ -76,7 +57,9 @@
                 </div>
             </div>
             <div id="row5" class="row" align="center" style="color:red"> 
-                <?php echo validation_errors(); ?>
+                <?php
+                echo $this->session->flashdata('errors'); 
+                ?>
             </div>
         </div>
     </body>

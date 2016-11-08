@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>success</title>
+        <title>email activation</title>
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,13 +18,13 @@
 
     		<div class="row text-center">
     	        <div class="col-sm-6 col-sm-offset-3">
-    	        <br><br> <h2 style="color:#0fad00">Success</h2>
+    	        <br><br> <h2 style="color:#0fad00">some error or activation expired</h2>
     	        <img src="http://osmhotels.com//assets/check-true.jpg">
-    	        <h3>success..Ta Da</h3>
-    	        <p style="font-size:20px;color:#5C5C5C;">Thank you for signup
-    			Please go to your mail and activate account.</p>
-    	        <a href="<?php echo base_url();?>index.php/login" class="btn btn-success" >Log in</a>
-    	    <br><br>
+                <br>
+                <br>
+                <h3 style="color:#0fad00">please login.</h3>
+    	        <a href="<?php echo base_url();?>index.php/login" class="btn btn-success" >login</a>
+    	        <br><br>
     	        </div>
     	        
     		</div>

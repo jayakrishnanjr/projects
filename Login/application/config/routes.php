@@ -39,15 +39,18 @@
 */
 
 $route['default_controller'] = "welcome";
+
+
+$route['home']="logincontroller/loginUser";
+$route['signup']="signupcontroller/signUpData";
+$route['logout']="logincontroller/deleteSessionData";
+$route['login']="logincontroller/checkSession";
+
+$route['activate/(:any)']="signupcontroller/activateEmail";
+$route['activate']="signupcontroller/activateEmail";
+
+
+
 $route['404_override'] = '';
-
-$route['home']="ajaxlogincontroller/showProfile";
-$route['profile']="ajaxlogincontroller/showProfile";
-$route["signup"]="signupcontroller/signUp";
-$route['logout']="ajaxlogincontroller/deleteSessionData";
-$route['login']="ajaxlogincontroller/sessionSetting";
-
-
-
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
