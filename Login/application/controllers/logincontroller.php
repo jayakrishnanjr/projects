@@ -12,11 +12,12 @@ class Logincontroller extends CI_Controller
         */ 
         public function checkSession()
         {
-            if(isset($this->session->userdata['logged_in'])&&$this->session->userdata['user_type']===1){
-            $this->load->view('home');
+            if(isset($this->session->userdata['logged_in'])&&$this->session->userdata['user_type']==1){
+                $this->load->view('userhome');
             }
             else{
-            $this->load->view('login');
+                $page="login";
+                $this->load->view($page);
             }
         }
 
@@ -34,12 +35,10 @@ class Logincontroller extends CI_Controller
             if ($this->input->post()){
                 $this->form_validation->set_rules('email', 'Email', 'required|max_length[55]|min_length[8]|trim|valid_email');
                 $this->form_validation->set_rules('password', 'Password', 'required|max_length[20]|min_length[8]|trim|alpha_numeric');
-                $this->session->set_userdata('email',$this->input->post('email'));
                     
                 /*check form validation*/ 
-                if ($this->form_validation->run() == FALSE){
-                    $this->session->set_flashdata('errors', validation_errors());
-                    redirect('login');
+                if ($this->form_validation->run() == FALSE){   
+                    $this->load->view('login');
                 }
                 else
                 {
@@ -56,10 +55,15 @@ class Logincontroller extends CI_Controller
                             
                             if($this->logindbmodel->checkifAccountActivated($credentials))
                             {
-                                $credentials['logged_in']= TRUE;
-                                $credentials['user_type']= 1;  
-                                $this->sessionData($credentials); /*calling function to set session*/
-                                $this->load->view('home'); 
+                                if ($this->logindbmodel->userStatus($credentials)) {
+                                    $credentials['logged_in']= TRUE;
+                                    $credentials['user_type']= 1;  
+                                    $this->sessionData($credentials);
+                                    $this->load->view('userhome');  
+                                }
+                                else{
+                                    $this->load->view("accountblock");
+                                }
                             }
                             else
                             {
@@ -69,7 +73,7 @@ class Logincontroller extends CI_Controller
                         else
                         {
                           $this->session->set_flashdata('errors','Password you entered is wrong');
-                          redirect('login');
+                          $this->load->view('login');
                         }  
                     }
                     else

@@ -31,7 +31,21 @@ Signup
  - Take care of all error scenarios
 
 
+facebook login
+load more with ajax
+full text search
+pagination
 
+delete from a table - "Are you sure you want to delete?"
+
+bootstrap validtor
+acl
+ecommerce filter - ( jquery_)
+
+
+CMS  - wordpress...
+
+unknown framework
 
 bugs
 -----

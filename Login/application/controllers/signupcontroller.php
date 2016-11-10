@@ -16,7 +16,6 @@ class Signupcontroller extends CI_Controller
             $this->session->set_userdata('email',$this->input->post('email'));    
             /*check form validation*/ 
             if ($this->form_validation->run() == FALSE){
-                $this->session->set_flashdata('error', validation_errors());
                 $this->load->view('signup');
             }
             else
@@ -28,7 +27,7 @@ class Signupcontroller extends CI_Controller
                 'Password' => md5($this->input->post('password')),
                 'Activationcode' => $activation,
                 'SignupTime'=>$signup,
-                'UserType'=>1
+                'Status'=>2
                 );
                 $this->load->model('signupmodel');
                 /*check if email exist*/ 

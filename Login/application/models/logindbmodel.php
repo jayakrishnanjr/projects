@@ -60,7 +60,6 @@ class Logindbmodel extends CI_Model
 		    $this->db->select('Activationcode');
 		    $this->db->where('Email',$mail);
 		    $query = $this->db->get('user');
-		    var_dump("JK");
 		    foreach ($query->result() as $row){
 			    $stat=$row->Activationcode;
 			}
@@ -88,7 +87,7 @@ class Logindbmodel extends CI_Model
 	**/
 	public function updateDatas($datas)
 	{
-		$data=array('Email'=>$datas['mail'],'Activationcode'=>null);
+		$data=array('Activationcode'=>null);
 		$this->db->where('Email',$datas['mail']);
 		$query=$this->db->update('user',$data);
 		return $query;	
@@ -109,6 +108,22 @@ class Logindbmodel extends CI_Model
 	   	        $val=$user->Activationcode; 
 	   	}
 	   	if (!empty($val)) {
+	   		return false;	
+	   	}
+	   	else{
+	   		return true;
+	   	}	
+	}
+	public function userStatus($credentials)
+	{
+		$this->db->select('Status');
+	   	$this->db->where('Email',$credentials['Email']);
+	   	$query = $this->db->get('user');
+	   	foreach ($query->result() as $user)
+	   	{
+	   	        $val=$user->Status; 
+	   	}
+	   	if ($val==1) {
 	   		return false;	
 	   	}
 	   	else{

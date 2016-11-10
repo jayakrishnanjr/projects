@@ -18,11 +18,12 @@
 
     		<div class="row text-center">
     	        <div class="col-sm-6 col-sm-offset-3">
-    	        <br><br> <h2 style="color:#0fad00">some error or activation expired</h2>
     	        <img src="https://my-powershell.fr/wp-content/uploads/2014/04/error-150x150.png">
                 <br>
                 <br>
-                <h3 style="color:#0fad00">please login.</h3>
+                <h3 style="color:#0fad00">YOUR ACCOUNT IS BLOCKED</h3>
+                <P>PLEASE CONTACT OUR SUPPORT TEAM</P>
+                <P>THANK YOU</P>
     	        <a href="<?php echo base_url();?>index.php/login" class="btn btn-danger" >login</a>
     	        <br><br>
     	        </div>

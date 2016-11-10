@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "welcome";
 
+/*user routes*/ 
 
 $route['home']="logincontroller/loginUser";
 $route['signup']="signupcontroller/signUpData";
@@ -48,6 +49,20 @@ $route['login']="logincontroller/checkSession";
 
 $route['activate/(:any)']="signupcontroller/activateEmail";
 $route['activate']="signupcontroller/activateEmail";
+
+
+/*admin routes*/ 
+
+
+$route['adminhome']="admincontroller/loginUser";
+$route['adminlogout']="admincontroller/deleteSessionData";
+$route['adminlogin']="admincontroller/checkSession";
+
+$route['enablestatus']="admincontroller/enableStatus";
+$route['disablestatus']="admincontroller/disableStatus";
+
+
+
 
 
 

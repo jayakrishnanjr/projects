@@ -38,7 +38,7 @@
             <div class="row login_block form-group">
                 <div class="col-md-4 col-md-offset-4" class="">
                     <div class="form-signin">
-                        <form method="POST" action="<?php echo base_url();?>index.php/home">
+                        <form method="POST" action="<?php echo base_url();?>index.php/adminhome">
                             <!-- email input box -->
                             <label>email</label>
                             <input type="email" class="form-control" name="email" 
@@ -53,8 +53,6 @@
                             <input class="btn btn-success btn-block" type="submit" id="submit" value="Login">
                             <br>
                             <br>
-                            <a href="<?php echo base_url();?>index.php/signup" class="btn btn-primary" 
-                                align="center" id="ahref">Sign up</a>
                         </form>
                     </div>
                 </div>

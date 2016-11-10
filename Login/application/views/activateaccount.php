@@ -19,7 +19,7 @@
             <div class="row text-center">
                 <div class="col-sm-6 col-sm-offset-3">
                 <br><br> <h2 style="color:#0fad00">Please activate your account</h2>
-                <img src="http://osmhotels.com//assets/check-true.jpg">
+                <img src="http://www.languagezone.cz/images/Icon-warning.png">
                 <br>
                 <br>
                 <h3 style="color:#0fad00">A link has been already sent to your mail</h3>
