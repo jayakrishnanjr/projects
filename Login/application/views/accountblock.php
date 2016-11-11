@@ -11,6 +11,16 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            body {
+              background-image: url('/Login/assets/img/image2.jpg');
+              background-size: cover;
+              background-repeat: no-repeat;
+              font-family: Arial, sans-serif;
+              font-weight: bold;
+              font-size: 14px;
+            }
+        </style>
 
     </head>
     <body>
@@ -21,7 +31,7 @@
     	        <img src="https://my-powershell.fr/wp-content/uploads/2014/04/error-150x150.png">
                 <br>
                 <br>
-                <h3 style="color:#0fad00">YOUR ACCOUNT IS BLOCKED</h3>
+                <h3 style="color:red">YOUR ACCOUNT IS BLOCKED</h3>
                 <P>PLEASE CONTACT OUR SUPPORT TEAM</P>
                 <P>THANK YOU</P>
     	        <a href="<?php echo base_url();?>index.php/login" class="btn btn-danger" >login</a>

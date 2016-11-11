@@ -11,7 +11,16 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+        <style type="text/css">
+            body {
+              background-image: url('/Login/assets/img/image2.jpg');
+              background-size: cover;
+              background-repeat: no-repeat;
+              font-family: Arial, sans-serif;
+              font-weight: bold;
+              font-size: 14px;
+            }
+        </style>
     </head>
     <body>
     	<div class="container">

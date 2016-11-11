@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "logincontroller/checkSession";
 
 /*user routes*/ 
 
@@ -61,6 +61,13 @@ $route['adminlogin']="admincontroller/checkSession";
 $route['enablestatus']="admincontroller/enableStatus";
 $route['disablestatus']="admincontroller/disableStatus";
 
+
+$route['facebook']="facebooklogincontroller/login";
+
+$route['Aboutus']="homecontroller/loadAboutUsView";
+$route['Profile']="homecontroller/loadProfileView";
+
+$route['Contactus']="homecontroller/loadContactusView";
 
 
 

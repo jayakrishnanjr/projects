@@ -64,6 +64,9 @@ $config['uri_protocol']	= 'AUTO';
 |
 | http://codeigniter.com/user_guide/general/urls.html
 */
+/*for facebook login*/ 
+$config['appId']   = '698513370313214';
+$config['secret']  = '2efe79ef2b192c9aac290fa2c96ceca9';
 
 $config['url_suffix'] = '';
 

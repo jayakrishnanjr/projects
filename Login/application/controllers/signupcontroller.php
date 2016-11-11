@@ -10,9 +10,9 @@ class Signupcontroller extends CI_Controller
     public function signUpData()
     {
         if ($this->input->post()){
-            $this->form_validation->set_rules('email', 'email', 'required|max_length[55]|min_length[8]|trim|valid_email');
-            $this->form_validation->set_rules('password', 'Password', 'required|max_length[20]|min_length[8]|trim|alpha_numeric');
-            $this->form_validation->set_rules('confirmpassword', 'password confirmation', 'required|max_length[20]|min_length[8]|trim|alpha_numeric|matches[password]');
+            $this->form_validation->set_rules('email', 'email', 'required|max_length[50]|min_length[10]|trim|valid_email');
+            $this->form_validation->set_rules('password', 'Password', 'required|max_length[15]|min_length[5]|trim|alpha_numeric');
+            $this->form_validation->set_rules('confirmpassword', 'password confirmation', 'required|max_length[15]|min_length[5]|trim|alpha_numeric|matches[password]');
             $this->session->set_userdata('email',$this->input->post('email'));    
             /*check form validation*/ 
             if ($this->form_validation->run() == FALSE){
@@ -113,16 +113,31 @@ class Signupcontroller extends CI_Controller
     public function activateEmail()
     {
         $vertificationCredentials=array('mail' => $this->uri->segment(2),
-                                        'id' => $this->uri->segment(3), );
-        $this->load->model('logindbmodel');
-        if ($this->logindbmodel->emailActivation($vertificationCredentials)) {
-            $this->load->view("activationsuccess");
-        }
-        else
-        {
-            $this->load->view("activationexpired");
+                                        'id' => $this->uri->segment(3)
+                                        );
+        $mail=$vertificationCredentials['mail'];
+        $id=$vertificationCredentials['id'];
 
-        }    
+        if (!filter_var($mail, FILTER_VALIDATE_EMAIL) === false) {
+            
+            if (ctype_alnum($id)) {
+                $this->load->model('logindbmodel');
+                if ($this->logindbmodel->emailActivation($vertificationCredentials)) {
+                    $this->load->view("activationsuccess");
+                }
+                else
+                {
+                    $this->load->view("activationexpired");
+
+                }  
+            }
+            else {
+                $this->load->view("activationexpired");
+            }           
+        } 
+        else {
+          $this->load->view("activationexpired");
+        }  
     }
 }
 ?>

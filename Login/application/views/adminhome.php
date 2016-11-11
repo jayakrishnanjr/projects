@@ -12,6 +12,14 @@
       <!-- Latest compiled JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <style>
+        body {
+          background-image: url('/Login/assets/img/image2.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          font-family: Arial, sans-serif;
+          font-weight: bold;
+          font-size: 14px;
+        }
         nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
         nav.navbar-findcond a { color: #f14444; }
         nav.navbar-findcond ul.navbar-nav a { color: #f14444; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
@@ -49,13 +57,13 @@
                            {
                               var status="enable";
                               var statusbutton="btn btn-success";
-                               $("#table1").append('<tr><td>'+v.Email+'</td><td>'+v.Password+'</td><td>'+v.Activationcode+'</td><td>'+v.SignupTime+'</td><td><a href="<?php echo base_url(); ?>index.php/admincontroller/disablestatus/'+v.Id+'" class="'+statusbutton+'">'+status+'</a></td>');
+                               $("#table1").html('<tr><td>'+v.Email+'</td><td>'+v.Password+'</td><td>'+v.Activationcode+'</td><td>'+v.SignupTime+'</td><td><a href="<?php echo base_url(); ?>index.php/admincontroller/disablestatus/'+v.Id+'" class="'+statusbutton+'">'+status+'</a></td>');
                            } 
                           else
                           {
                               var statusbutton="btn btn-danger";
                               var status="disable";
-                               $("#table1").append('<tr><td>'+v.Email+'</td><td>'+v.Password+'</td><td>'+v.Activationcode+'</td><td>'+v.SignupTime+'</td><td><a href="<?php echo base_url(); ?>index.php/admincontroller/enablestatus/'+v.Id+'" class="'+statusbutton+'">'+status+'</a></td>');
+                               $("#table1").html('<tr><td>'+v.Email+'</td><td>'+v.Password+'</td><td>'+v.Activationcode+'</td><td>'+v.SignupTime+'</td><td><a href="<?php echo base_url(); ?>index.php/admincontroller/enablestatus/'+v.Id+'" class="'+statusbutton+'">'+status+'</a></td>');
                           }
                          });
                       },
@@ -75,7 +83,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbar">
                   <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="<?php echo base_url();?>index.php/adminlogin">logout<span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="<?php echo base_url();?>index.php/adminlogout">logout<span class="sr-only">(current)</span></a></li>
                   </ul>  
                 </div>
             </div>

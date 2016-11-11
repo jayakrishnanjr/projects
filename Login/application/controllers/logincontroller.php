@@ -33,9 +33,8 @@ class Logincontroller extends CI_Controller
         public function loginUser()
         {
             if ($this->input->post()){
-                $this->form_validation->set_rules('email', 'Email', 'required|max_length[55]|min_length[8]|trim|valid_email');
-                $this->form_validation->set_rules('password', 'Password', 'required|max_length[20]|min_length[8]|trim|alpha_numeric');
-                    
+                $this->form_validation->set_rules('email', 'Email', 'required|max_length[50]|min_length[10]|trim|valid_email');
+                $this->form_validation->set_rules('password', 'Password', 'required|max_length[15]|min_length[5]|trim|alpha_numeric');
                 /*check form validation*/ 
                 if ($this->form_validation->run() == FALSE){   
                     $this->load->view('login');
