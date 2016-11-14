@@ -13,7 +13,7 @@ class Logincontroller extends CI_Controller
         public function checkSession()
         {
             if(isset($this->session->userdata['logged_in'])&&$this->session->userdata['user_type']==1){
-                $this->load->view('userhome');
+                redirect('home');
             }
             else{
                 $page="login";
@@ -58,7 +58,7 @@ class Logincontroller extends CI_Controller
                                     $credentials['logged_in']= TRUE;
                                     $credentials['user_type']= 1;  
                                     $this->sessionData($credentials);
-                                    $this->load->view('userhome');  
+                                    redirect('home'); 
                                 }
                                 else{
                                     $this->load->view("accountblock");

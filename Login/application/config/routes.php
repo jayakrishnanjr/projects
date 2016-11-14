@@ -42,7 +42,7 @@ $route['default_controller'] = "logincontroller/checkSession";
 
 /*user routes*/ 
 
-$route['home']="logincontroller/loginUser";
+$route['home']="homecontroller/loadHomeView";
 $route['signup']="signupcontroller/signUpData";
 $route['logout']="logincontroller/deleteSessionData";
 $route['login']="logincontroller/checkSession";

@@ -52,18 +52,21 @@
                       url: "<?php echo base_url(); ?>" + "index.php/admincontroller/viewAllUserDetails",
                       dataType: 'json',
                       success: function(result) {
+                        $('#table1').html("<tr><th>" +"Email"+ "</th><th>" + "Password" +
+                                "</th><th>" +"Activation" + "</th><th>" + "SignupTime" +
+                                  "</th><th>" + "Status" + "</th></tr>");
                          $.each(result.result, function(k, v){
                           if (v.Status == 1)
                            {
                               var status="enable";
                               var statusbutton="btn btn-success";
-                               $("#table1").html('<tr><td>'+v.Email+'</td><td>'+v.Password+'</td><td>'+v.Activationcode+'</td><td>'+v.SignupTime+'</td><td><a href="<?php echo base_url(); ?>index.php/admincontroller/disablestatus/'+v.Id+'" class="'+statusbutton+'">'+status+'</a></td>');
+                               $("#table1").append('<tr><td>'+v.Email+'</td><td>'+v.Password+'</td><td>'+v.Activationcode+'</td><td>'+v.SignupTime+'</td><td><a href="<?php echo base_url(); ?>index.php/admincontroller/disablestatus/'+v.Id+'" class="'+statusbutton+'">'+status+'</a></td>');
                            } 
                           else
                           {
                               var statusbutton="btn btn-danger";
                               var status="disable";
-                               $("#table1").html('<tr><td>'+v.Email+'</td><td>'+v.Password+'</td><td>'+v.Activationcode+'</td><td>'+v.SignupTime+'</td><td><a href="<?php echo base_url(); ?>index.php/admincontroller/enablestatus/'+v.Id+'" class="'+statusbutton+'">'+status+'</a></td>');
+                               $("#table1").append('<tr><td>'+v.Email+'</td><td>'+v.Password+'</td><td>'+v.Activationcode+'</td><td>'+v.SignupTime+'</td><td><a href="<?php echo base_url(); ?>index.php/admincontroller/enablestatus/'+v.Id+'" class="'+statusbutton+'">'+status+'</a></td>');
                           }
                          });
                       },
@@ -98,15 +101,6 @@
        <div class="container">
            <div class="center custyle">
            <table class="table table-striped custab" id="table1">
-           <thead>
-               <tr>
-                   <th>emailID</th>
-                   <th>password</th>
-                   <th>activation</th>
-                   <th class="text-center">signuptime</th>
-                   <th class="text-center">status</th>
-               </tr>             
-           </thead>
            </table>
            </div>
        </div>

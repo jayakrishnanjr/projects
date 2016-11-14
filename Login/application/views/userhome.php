@@ -14,6 +14,7 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
     <style>
         @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
 
@@ -181,10 +182,34 @@
         .sidebar-nav li:nth-child(5) a {
             background: #245682 !important;
             color: #fff !important;
-        }
-
-        
+        }    
     </style>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    var total_record = 0;
+    var total_groups = <?php echo $totaldata; ?>;  
+    $('#results').load("<?php echo base_url(); ?>/index.php/homecontroller/loadData",
+     {'group_no':total_record}, function() {total_record++;});
+    $(window).scroll(function() {       
+        if($(window).scrollTop() + $(window).height() == $(document).height())  
+        {           
+            if(total_record <= total_groups)
+            {
+                $.ajax({
+                      type: "POST",
+                      url: "<?php echo base_url(); ?>/index.php/homecontroller/loadData",
+                      dataType: 'html',
+                      success: function(result) {                            
+                        $("#results").append(result);                              
+                        total_record++;
+                    }
+                });     
+            }
+        }
+    });
+    });
+    </script>
+
     <body>
         <body>
             <div id="navbar-wrapper">
@@ -203,7 +228,7 @@
                             <div id="navbar-collapse" class="collapse navbar-collapse" align="center">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="dropdown">
-                                        <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://lorempixel.com/100/100/people/9/" class="img-responsive img-thumbnail img-circle"> Jayakrishnan J R</a>
+                                        <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/Login/assets/img/image2.jpg" class="img-responsive img-thumbnail img-circle"> Jayakrishnan J R</a>
                                         <ul class="dropdown-menu dropdown-block" role="menu">
                                             <li><a href="<?php echo base_url();?>index.php/Profile">Profile</a></li>
                                             <li><a href="<?php echo base_url();?>index.php/logout">Logout</a></li>
@@ -252,7 +277,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url();?>index.php/ogout">
+                                <a href="<?php echo base_url();?>index.php/logout">
                                     <span class="sidebar-icon"><i class="fa fa-dashboard"></i></span>
                                     <span class="sidebar-title">Logout</span>
                                 </a>
@@ -261,6 +286,9 @@
                     </aside>            
                 </div>
                 <main id="page-content-wrapper" role="main">
+                    <div id="body">
+                      <ol> <div id="results"></div></ol>
+                    </div> 
                 </main>
             </div> 
         </body>

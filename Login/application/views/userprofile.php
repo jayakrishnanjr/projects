@@ -128,11 +128,61 @@
     nav.navbar-findcond ul.navbar-nav a:hover { border-color: #f14444; }
     #row1{
       margin-top: 200px;
-    }   
+    }  
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+
+    .navbar-default .navbar-nav #user-profile {
+        height: 50px;
+        padding-top: 15px;
+        padding-left: 58px;
+    }
+
+    .navbar-default .navbar-nav #user-profile img {
+        height: 45px;
+        width: 45px;
+        position: absolute;
+        top: 2px;
+        left: 8px;
+        padding: 1px;
+    } 
   </style>
 </head>
 <body>
-  
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="<?php echo base_url();?>index.php/home">example.com</a>
+          </div>
+          <div id="navbar-collapse" class="collapse navbar-collapse" align="center">
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                      <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/Login/assets/img/image2.jpg" class="img-responsive img-thumbnail img-circle"> Jayakrishnan J R</a>
+                      <ul class="dropdown-menu dropdown-block" role="menu">
+                          <li><a href="<?php echo base_url();?>index.php/Profile">Profile</a></li>
+                          <li><a href="<?php echo base_url();?>index.php/logout">Logout</a></li>
+                      </ul>
+                  </li>
+              </ul>
+              <form class="navbar-form">
+                  <div class="form-group" style="display:inline;">
+                    <div class="input-group" style="display:table;">
+                      <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
+                      <input class="form-control" name="search" placeholder="Search Here" autocomplete="off" autofocus="autofocus" type="text">
+                    </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </nav>
   <div class="row1">
     
   </div>
