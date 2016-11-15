@@ -43,6 +43,7 @@ $route['default_controller'] = "logincontroller/checkSession";
 /*user routes*/ 
 
 $route['home']="homecontroller/loadHomeView";
+$route['Home']="logincontroller/loginUser";
 $route['signup']="signupcontroller/signUpData";
 $route['logout']="logincontroller/deleteSessionData";
 $route['login']="logincontroller/checkSession";
@@ -73,6 +74,6 @@ $route['Contactus']="homecontroller/loadContactusView";
 
 
 
-$route['404_override'] = '';
+$route['404_override'] = 'logincontroller/errorMessage';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

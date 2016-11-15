@@ -6,23 +6,6 @@
              <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
              <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
          <style>
-          nav.navbar-notes { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
-          nav.navbar-notes a { color: #f14444; }
-          nav.navbar-notes ul.navbar-nav a { color: #f14444; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
-          nav.navbar-notes ul.navbar-nav a:hover,
-          nav.navbar-notes ul.navbar-nav a:visited,
-          nav.navbar-notes ul.navbar-nav a:focus,
-          nav.navbar-notes ul.navbar-nav a:active { background: #fff; }
-          nav.navbar-notes ul.navbar-nav a:hover { border-color: #f14444; }
-          nav.navbar-notes li.divider { background: #ccc; }
-          nav.navbar-notes button.navbar-toggle { background: #f14444; border-radius: 2px; }
-          nav.navbar-notes button.navbar-toggle:hover { background: #999; }
-          nav.navbar-notes button.navbar-toggle > span.icon-bar { background: #fff; }
-          nav.navbar-notes ul.dropdown-menu { border: 0; background: #fff; border-radius: 4px; margin: 4px 0; box-shadow: 0 0 4px 0 #ccc; }
-          nav.navbar-notes ul.dropdown-menu > li > a { color: #444; }
-          nav.navbar-notes ul.dropdown-menu > li > a:hover { background: #f14444; color: #fff; }
-          nav.navbar-notes span.badge { background: #f14444; font-weight: normal; font-size: 11px; margin: 0 4px; }
-          nav.navbar-notes span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff; }
           #a2,#a5,#a3,#a4{
             color: grey;
           }
@@ -50,6 +33,7 @@
           .navbar-fixed-top {
               top: 0;
               border-width: 0 0 1px;
+              
           }
 
           .navbar-default .navbar-nav #user-profile {
@@ -66,7 +50,6 @@
               left: 8px;
               padding: 1px;
           }
-
          </style>    
      </head>
   <body>
@@ -84,7 +67,7 @@
           <div id="navbar-collapse" class="collapse navbar-collapse" align="center">
               <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
-                      <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/Login/assets/img/image2.jpg" class="img-responsive img-thumbnail img-circle"> Jayakrishnan J R</a>
+                      <a id="user-profile" href="" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $image_url;?>" class="img-responsive img-thumbnail img-circle"><?php echo $name;?></</a>
                       <ul class="dropdown-menu dropdown-block" role="menu">
                           <li><a href="<?php echo base_url();?>index.php/Profile">Profile</a></li>
                           <li><a href="<?php echo base_url();?>index.php/logout">Logout</a></li>
@@ -135,12 +118,8 @@
                         <div class="form-group">
                             <label for="subject">
                                 Subject</label>
-                            <select id="subject" name="subject" class="form-control" required="required">
-                                <option value="na" selected="">Choose One:</option>
-                                <option value="service">General Customer Service</option>
-                                <option value="suggestions">Suggestions</option>
-                                <option value="product">Product Support</option>
-                            </select>
+                             <input type="text" class="form-control" id="subject" placeholder="subject" required="required" />    
+                            
                         </div>
                     </div>
                     <div class="col-md-6">

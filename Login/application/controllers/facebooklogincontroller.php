@@ -1,37 +1,72 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require_once APPPATH.'libraries/facebook.php';
-class Facebooklogincontroller extends CI_Controller {
+
+/*
+*class for facebook login operation
+*/ 
+class Facebooklogincontroller extends CI_Controller 
+{    
+    /**
+    *function for facebook login
+    *@param void
+    *@return void
+    */ 
     public function login(){
-        // $this->load->library('facebook'); // Automatically picks appId and secret from 
+        // Automatically picks appId and secret from config 
         $this->load->library('facebook');
-           //  , array(
-           // 'appId' => '698513370313214',
-           // 'secret' => '2efe79ef2b192c9aac290fa2c96ceca9',
-           // ));
         $user = $this->facebook->getUser();
-        // var_dump($user);
-        if ($user) {
-        $data['user_profile'] = $this->facebook->api('/me/');
-        var_dump($data);
+        $fbPermissions = 'email';
 
-        // Get logout url of facebook
-        $data['logout_url'] = $this->facebook->getLogoutUrl(array('next' => base_url() . 'index.php/facebooklogincontroller/logout'));
+        if ($user) {    
+            $data['user_profile'] = $this->facebook->api('/me/');
+            $signup=date("Y-m-d h:i:sa");
 
-        // Send data to profile page
-        $this->load->view('profile', $data);
+            $credentials = array(
+                               'name' => $data['user_profile']['name'],
+                               'email' =>$data['user_profile']['email'],
+                               'facebookid' => $data['user_profile']['id'],
+                               'SignupTime'=>$signup,
+                               'Status'=>2
+                           );
+
+            $this->load->model('facebookmodel');
+
+            if ($this->facebookmodel->userExists($credentials['facebookid'])) {
+                // Get logout url of facebook
+                // $data['logout_url'] = $this->facebook->getLogoutUrl(array('next' => base_url() . 'index.php/facebooklogincontroller/logout'));
+                $credentials['logged_in']= TRUE;
+                $credentials['user_type']= 2;  
+                $this->sessionData($credentials);
+
+                redirect('home');
+            }
+            else
+            {
+
+                if ($this->facebookmodel->insertData($credentials)) {
+                    $credentials['logged_in']= TRUE;
+                    $credentials['user_type']= 2;  
+                    $this->sessionData($credentials);
+                    redirect('home');
+                }
+                else{
+                    echo "Some connection problem, Please try again later";
+                }
+            }
         } 
         else {
-
-        // Store users facebook login url
-        $data['login_url'] = $this->facebook->getLoginUrl();
-        $this->load->view('facebooklogin', $data);
+            $data['login_url'] = $this->facebook->getLoginUrl();
+            redirect($data['login_url']);
         }
     }
-    public function logout(){
-        $this->load->library('facebook');
-        // Logs off session from website
-        $this->facebook->destroySession();
-        // Make sure you destory website session as well.
-        redirect('facebooklogincontroller/login');
+    
+    /**
+    *function to set session data
+    *@param credentials
+    *@return void
+    */ 
+    public function sessionData($credentials)
+    {
+        $this->session->set_userdata($credentials);    
     }
 }

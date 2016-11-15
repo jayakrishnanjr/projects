@@ -31,7 +31,7 @@ class Admincontroller extends CI_controller
 	*/ 
 	public function checkSession()
 	{
-	    if(isset($this->session->userdata['logged_in'])&&$this->session->userdata['user_type']==2){
+	    if(isset($this->session->userdata['logged_in'])&&$this->session->userdata['user_type']==3){
 	        $this->load->view('adminhome');
 	    }
 	    else{
@@ -72,7 +72,7 @@ class Admincontroller extends CI_controller
 	                /*check if password is correct*/ 
 	                if ($this->adminmodel->checkPassword($credentials['Email'],$credentials['Password'])) {
                             $credentials['logged_in']= TRUE;
-                            $credentials['user_type']= 2;  
+                            $credentials['user_type']= 3;  
                             $this->sessionData($credentials);
                             $this->load->view('adminhome'); 
 	                }

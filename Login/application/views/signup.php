@@ -93,6 +93,19 @@
                             validating: 'glyphicon glyphicon-refresh'
                         },
                         fields: {
+                          name: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'The email address is required and cannot be empty'
+                                    },
+                                    stringLength: {
+                                        max: 50,
+                                        min:5,
+                                        message: 'name must be 5 to 50 characters long'
+                                    }
+
+                                }
+                            },
                             email: {
                                 validators: {
                                     notEmpty: {
@@ -156,6 +169,12 @@
         </nav>
         <div class="col-md-4 col-md-offset-4" id="contactform" align="center">
             <form id="contactForm" method="post" action="<?php echo base_url();?>index.php/signup">
+                <div class="form-group">
+                    <label class="control-label">Name</label>
+                    <div>
+                        <input type="text" class="form-control" name="name" value="<?php set_value('name')?>" />
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="control-label">Email Address</label>
                     <div>

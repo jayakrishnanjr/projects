@@ -27,5 +27,31 @@ class Homemodel extends CI_Model
 		$query = $this->db->get('posts', $perpage, $start);
         return $query->result();
 	}
+
+	/**
+	*function to get user details if normal user
+	*@param email
+	*@return result
+	*/ 
+	public function getUserDatas($email)
+	{
+	   $this->db->select('*');
+	   $this->db->where('Email',$email);
+	   $query = $this->db->get('user');
+	   return $query->result();
+	}
+
+	/**
+	*function to get user details if facebook user
+	*@param email
+	*@return result
+	*/ 
+	public function getFacebookUserDatas($facebookid)
+	{
+	   $this->db->select('*');
+	   $this->db->where('facebookid',$facebookid);
+	   $query = $this->db->get('user');
+	   return $query->result();
+	}
 }
 ?>

@@ -116,22 +116,16 @@
     .profile-content {
       padding: 20px;
       background: #fff;
-      min-height: 460px;
+      min-height: 392px;
     }
-    nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
-    nav.navbar-findcond a { color: #f14444; }
-    nav.navbar-findcond ul.navbar-nav a { color: #f14444; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
-    nav.navbar-findcond ul.navbar-nav a:hover,
-    nav.navbar-findcond ul.navbar-nav a:visited,
-    nav.navbar-findcond ul.navbar-nav a:focus,
-    nav.navbar-findcond ul.navbar-nav a:active { background: #fff; }
-    nav.navbar-findcond ul.navbar-nav a:hover { border-color: #f14444; }
+
     #row1{
       margin-top: 200px;
     }  
     .navbar-fixed-top {
         top: 0;
         border-width: 0 0 1px;
+        
     }
 
     .navbar-default .navbar-nav #user-profile {
@@ -165,7 +159,7 @@
           <div id="navbar-collapse" class="collapse navbar-collapse" align="center">
               <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
-                      <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/Login/assets/img/image2.jpg" class="img-responsive img-thumbnail img-circle"> Jayakrishnan J R</a>
+                     <a id="user-profile" href="" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $image_url;?>" class="img-responsive img-thumbnail img-circle"><?php echo $name;?></</a>
                       <ul class="dropdown-menu dropdown-block" role="menu">
                           <li><a href="<?php echo base_url();?>index.php/Profile">Profile</a></li>
                           <li><a href="<?php echo base_url();?>index.php/logout">Logout</a></li>
@@ -192,16 +186,13 @@
         <div class="profile-sidebar">
           <!-- SIDEBAR USERPIC -->
           <div class="profile-userpic">
-            <img src="/Login/assets/img/image2.jpg" class="img-responsive" alt="profile">
+            <img src="<?php echo $image_url;?>" class="img-responsive" alt="profile">
           </div>
           <!-- END SIDEBAR USERPIC -->
           <!-- SIDEBAR USER TITLE -->
           <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-              Marcus Doe
-            </div>
-            <div class="profile-usertitle-job">
-              Developer
+              <?php echo $name;?>
             </div>
           </div>
           <!-- END SIDEBAR USER TITLE -->
@@ -225,12 +216,7 @@
                 Account Settings </a>
               </li>
               <li>
-                <a href="#">
-                <i class="glyphicon glyphicon-ok"></i>
-                Tasks </a>
-              </li>
-              <li>
-                <a href="#">
+                <a href="<?php echo base_url();?>/index.php/Contactus">
                 <i class="glyphicon glyphicon-flag"></i>
                 Help </a>
               </li>
@@ -246,9 +232,6 @@
       </div>
     </div>
     </div>
-    <br>
-  <br>
-
 </body>
 </html> 
   

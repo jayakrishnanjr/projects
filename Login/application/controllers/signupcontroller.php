@@ -10,6 +10,7 @@ class Signupcontroller extends CI_Controller
     public function signUpData()
     {
         if ($this->input->post()){
+            $this->form_validation->set_rules('name', 'name', 'required|max_length[50]|min_length[5]|trim');
             $this->form_validation->set_rules('email', 'email', 'required|max_length[50]|min_length[10]|trim|valid_email');
             $this->form_validation->set_rules('password', 'Password', 'required|max_length[15]|min_length[5]|trim|alpha_numeric');
             $this->form_validation->set_rules('confirmpassword', 'password confirmation', 'required|max_length[15]|min_length[5]|trim|alpha_numeric|matches[password]');
@@ -23,6 +24,7 @@ class Signupcontroller extends CI_Controller
                 $activation="dhgffhsfhjh".md5(now())."dfhjhfj";
                 $signup=date("Y-m-d h:i:sa");
                 $credentials= array(
+                'name' =>$this->input->post('name'),   
                 'Email' => $this->input->post('email'),
                 'Password' => md5($this->input->post('password')),
                 'Activationcode' => $activation,

@@ -41,6 +41,9 @@ delete from a table - "Are you sure you want to delete?"
 bootstrap validtor
 acl
 ecommerce filter - ( jquery_)
+api
+mostache
+error logging api
 
 
 CMS  - wordpress...

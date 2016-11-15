@@ -54,7 +54,7 @@
               max-width: 180px;
               text-decoration: none;
               border-radius: 4px;
-              padding: 20px 30px;
+              padding: 10px 10px;
             }
 
             a.button {

@@ -14,7 +14,6 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
     <style>
         @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
 
@@ -25,6 +24,7 @@
         .navbar-fixed-top {
             top: 0;
             border-width: 0 0 1px;
+            
         }
 
         .navbar-default .navbar-nav #user-profile {
@@ -182,12 +182,20 @@
         .sidebar-nav li:nth-child(5) a {
             background: #245682 !important;
             color: #fff !important;
-        }    
+        }
+        .ex-testimonial{background:#c5ced8;padding:10px;border-radius:6px; margin:25px 15px 0px 15px;}
+        .ex-testimonial-inner{background:#fff;padding:10px;border-radius:3px;}
+        .example-thumb{width:40px; display:inline-block; vertical-align:top;}
+        .example-name{display:inline-block; margin:0px; font-family:Helvetica, Arial, Sans-serif; font-weight:700; color:#3b5998;}
+        .example-date a{color:#9197a3; font-size:12px; font-weight:500; text-decoration:underline;}
+        .example-date {color:#9197a3; font-size:12px; font-weight:500;}
+        .fa.fa-caret-right{color:#9197a3;}
+        .ex-testimonial-copy{padding:15px 0px 0px 0px;}    
     </style>
     <script type="text/javascript">
     $(document).ready(function() {
     var total_record = 0;
-    var total_groups = <?php echo $totaldata; ?>;  
+    var total_groups = <?php echo $totaldata;?>; 
     $('#results').load("<?php echo base_url(); ?>/index.php/homecontroller/loadData",
      {'group_no':total_record}, function() {total_record++;});
     $(window).scroll(function() {       
@@ -199,7 +207,7 @@
                       type: "POST",
                       url: "<?php echo base_url(); ?>/index.php/homecontroller/loadData",
                       dataType: 'html',
-                      success: function(result) {                            
+                      success: function(result) {                          
                         $("#results").append(result);                              
                         total_record++;
                     }
@@ -228,7 +236,7 @@
                             <div id="navbar-collapse" class="collapse navbar-collapse" align="center">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="dropdown">
-                                        <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/Login/assets/img/image2.jpg" class="img-responsive img-thumbnail img-circle"> Jayakrishnan J R</a>
+                                        <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $image_url;?>" class="img-responsive img-thumbnail img-circle"><?php echo $name;?></</a>
                                         <ul class="dropdown-menu dropdown-block" role="menu">
                                             <li><a href="<?php echo base_url();?>index.php/Profile">Profile</a></li>
                                             <li><a href="<?php echo base_url();?>index.php/logout">Logout</a></li>

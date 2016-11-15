@@ -55,7 +55,7 @@
               max-width: 180px;
               text-decoration: none;
               border-radius: 4px;
-              padding: 20px 30px;
+              padding: 10px 10px;
             }
 
             a.button {
@@ -130,7 +130,7 @@
         </nav>
         <div id="login">
             <div class="col-md-4 col-md-offset-4" id="contactform" align="center">
-                <form id="contactForm" method="post" action="<?php echo base_url();?>index.php/home">
+                <form id="contactForm" method="post" action="<?php echo base_url();?>index.php/Home">
                     <div class="form-group">
                         <label class="control-label">Email Address</label>
                         <div>
@@ -169,7 +169,7 @@
         <hr>
         <div class="row" align="center">
             <div>
-              <a href="" class="btn btn-lg btn-primary" role="button"><span class="fa fa-facebook"></span>Login With Facebook</a>
+              <a href="<?php echo base_url();?>index.php/facebook" class="btn btn-lg btn-primary" role="button"><span class="fa fa-facebook"></span>Login With Facebook</a>
             </div>
         </div> 
     </body>
