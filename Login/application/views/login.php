@@ -55,7 +55,7 @@
               max-width: 180px;
               text-decoration: none;
               border-radius: 4px;
-              padding: 10px 10px;
+              padding: 10px 20px;
             }
 
             a.button {
@@ -78,47 +78,6 @@
               box-shadow: rgba(30, 22, 54, 0.7) 0 80px 0px 2px inset;
             }   
         </style>
-        <script type="text/javascript">
-                $(document).ready(function() {
-                    $('#contactForm').bootstrapValidator({
-                        containers: '#messages',
-                        feedbackIcons: {
-                            valid: 'glyphicon glyphicon-ok',
-                            invalid: 'glyphicon glyphicon-remove',
-                            validating: 'glyphicon glyphicon-refresh'
-                        },
-                        fields: {
-                            email: {
-                                validators: {
-                                    notEmpty: {
-                                        message: 'The email address is required and cannot be empty'
-                                    },
-                                    emailAddress: {
-                                        message: 'The email address is not valid'
-                                    },
-                                    stringLength: {
-                                        max: 50,
-                                        min:10,
-                                        message: 'Email must be 10 to 50 characters long'
-                                    }
-                                }
-                            },
-                            password: {
-                                validators: {
-                                    notEmpty: {
-                                        message: 'The Password is required and cannot be empty'
-                                    },
-                                    stringLength: {
-                                        max: 15,
-                                        min:5,
-                                        message: 'password must be 5 to 15 characters long'
-                                    }
-                                }
-                            }
-                        }
-                    });
-                });
-        </script>
     </head>
     <body>
         <nav class="navbar navbar-findcond navbar-fixed-top">
@@ -134,13 +93,13 @@
                     <div class="form-group">
                         <label class="control-label">Email Address</label>
                         <div>
-                            <input type="email" class="form-control" name="email" value="<?php set_value('email')?>"/>
+                          <input type="email" class="form-control" name="email" value="<?php if(!empty($email)){ echo $email; } ?>" placeholder="Email Address"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Password</label>
                         <div>
-                            <input type="password" class="form-control" name="password" />
+                            <input type="password" class="form-control" name="password" " placeholder="Password"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -169,10 +128,51 @@
         <hr>
         <div class="row" align="center">
             <div>
-              <a href="<?php echo base_url();?>index.php/facebook" class="btn btn-lg btn-primary" role="button"><span class="fa fa-facebook"></span>Login With Facebook</a>
+              <a href="<?php echo base_url();?>index.php/facebook" class="btn btn-lg btn-primary" role="button"><span class="fa fa-facebook" style="padding-right: 8px;"></span>Signup With Facebook</a>
             </div>
         </div> 
     </body>
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#contactForm').bootstrapValidator({
+                    containers: '#messages',
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        email: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The email address is required and cannot be empty'
+                                },
+                                emailAddress: {
+                                    message: 'The email address is not valid'
+                                },
+                                stringLength: {
+                                    max: 50,
+                                    min:10,
+                                    message: 'Email must be 10 to 50 characters long'
+                                }
+                            }
+                        },
+                        password: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The Password is required and cannot be empty'
+                                },
+                                stringLength: {
+                                    max: 15,
+                                    min:5,
+                                    message: 'password must be 5 to 15 characters long'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
 </html>
 
 

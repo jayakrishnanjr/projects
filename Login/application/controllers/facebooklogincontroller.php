@@ -34,11 +34,16 @@ class Facebooklogincontroller extends CI_Controller
             if ($this->facebookmodel->userExists($credentials['facebookid'])) {
                 // Get logout url of facebook
                 // $data['logout_url'] = $this->facebook->getLogoutUrl(array('next' => base_url() . 'index.php/facebooklogincontroller/logout'));
-                $credentials['logged_in']= TRUE;
-                $credentials['user_type']= 2;  
-                $this->sessionData($credentials);
-
-                redirect('home');
+                if ($this->logindbmodel->userStatus($credentials)) {
+                    
+                    $credentials['logged_in']= TRUE;
+                    $credentials['user_type']= 2;  
+                    $this->sessionData($credentials);
+                    redirect('home');
+                }
+                else{
+                    $this->load->view("accountblock");
+                } 
             }
             else
             {

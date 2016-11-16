@@ -190,37 +190,55 @@
         .example-date a{color:#9197a3; font-size:12px; font-weight:500; text-decoration:underline;}
         .example-date {color:#9197a3; font-size:12px; font-weight:500;}
         .fa.fa-caret-right{color:#9197a3;}
-        .ex-testimonial-copy{padding:15px 0px 0px 0px;}    
+        .ex-testimonial-copy{padding:15px 0px 0px 0px;}   
     </style>
     <script type="text/javascript">
     $(document).ready(function() {
-    var total_record = 0;
-    var total_groups = <?php echo $totaldata;?>; 
-    $('#results').load("<?php echo base_url(); ?>/index.php/homecontroller/loadData",
-     {'group_no':total_record}, function() {total_record++;});
-    $(window).scroll(function() {       
-        if($(window).scrollTop() + $(window).height() == $(document).height())  
-        {           
-            if(total_record <= total_groups)
-            {
-                $.ajax({
-                      type: "POST",
-                      url: "<?php echo base_url(); ?>/index.php/homecontroller/loadData",
-                      dataType: 'html',
-                      success: function(result) {                          
-                        $("#results").append(result);                              
-                        total_record++;
-                    }
-                });     
+        $("#dropdownsearch").hover(function(){
+            $(this).css("background-color","#9197a3");
+        });
+        var total_record = 0;
+        var total_groups = <?php echo $totaldata;?>; 
+        $('#results').load("<?php echo base_url(); ?>/index.php/homecontroller/loadData",
+         {'group_no':total_record}, function() {total_record++;});
+        $(window).scroll(function() {       
+            if($(window).scrollTop() + $(window).height() == $(document).height())  
+            {           
+                if(total_record <= total_groups)
+                {
+                    $.ajax({
+                          type: "POST",
+                          url: "<?php echo base_url(); ?>/index.php/homecontroller/loadData",
+                          dataType: 'html',
+                          success: function(result) {                          
+                            $("#results").append(result);                              
+                            total_record++;
+                        }
+                    });     
+                }
             }
-        }
-    });
+        });
+
+        $("#search").keyup(function(){
+            var searchvalue = $("#search").val();
+             $.ajax(
+                {
+                type: "POST",
+                url: "<?php echo base_url(); ?>" + "/index.php/homecontroller/dataSearch",
+                dataType: 'html',
+                data: {search: searchvalue},
+                dataType: 'html',
+                success: function(result) {                      
+                    $("#dropdownsearch").html(result);                              
+                }
+            });
+        });
     });
     </script>
 
     <body>
         <body>
-            <div id="navbar-wrapper">
+            <div id="navbar-wrapper" class="row">
                 <header>
                     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                         <div class="container-fluid">
@@ -236,7 +254,7 @@
                             <div id="navbar-collapse" class="collapse navbar-collapse" align="center">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="dropdown">
-                                        <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $image_url;?>" class="img-responsive img-thumbnail img-circle"><?php echo $name;?></</a>
+                                        <a id="user-profile" href="" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $image_url;?>" class="img-responsive img-thumbnail img-circle"><?php echo $name;?></</a>
                                         <ul class="dropdown-menu dropdown-block" role="menu">
                                             <li><a href="<?php echo base_url();?>index.php/Profile">Profile</a></li>
                                             <li><a href="<?php echo base_url();?>index.php/logout">Logout</a></li>
@@ -247,10 +265,12 @@
                                     <div class="form-group" style="display:inline;">
                                       <div class="input-group" style="display:table;">
                                         <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
-                                        <input class="form-control" name="search" placeholder="Search Here" autocomplete="off" autofocus="autofocus" type="text">
+                                        <input type="text" class="form-control" placeholder="Search" id="search" data-toggle="dropdown" autocomplete="off"">
+                                        <ul class="dropdown-menu" id="dropdownsearch" style="width:990px;font-size: 25px; text-decoration:none;font-weight: 5px;">
+                                        </ul>
                                       </div>
                                     </div>
-                                </form>
+                                </form>  
                             </div>
                         </div>
                     </nav>
@@ -262,13 +282,13 @@
                         <ul id="sidemenu" class="sidebar-nav">
                             <li>
                                 <a href="<?php echo base_url();?>index.php/home">
-                                    <span class="sidebar-icon"><i class="fa fa-dashboard"></i></span>
+                                    <span class="sidebar-icon"><i class="fa fa-home"></i></span>
                                     <span class="sidebar-title">Home</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="<?php echo base_url();?>index.php/Profile">
-                                    <span class="sidebar-icon"><i class="fa fa-dashboard"></i></span>
+                                    <span class="sidebar-icon"><i class="fa fa-user"></i></span>
                                     <span class="sidebar-title">Profile</span>
                                 </a>
                             </li>
@@ -280,7 +300,7 @@
                             </li>
                             <li>
                                 <a href="<?php echo base_url();?>index.php/Contactus">
-                                    <span class="sidebar-icon"><i class="fa fa-dashboard"></i></span>
+                                    <span class="sidebar-icon"><i class="fa fa-addressbook"></i></span>
                                     <span class="sidebar-title">Contact us</span>
                                 </a>
                             </li>

@@ -54,7 +54,7 @@
               max-width: 180px;
               text-decoration: none;
               border-radius: 4px;
-              padding: 20px 30px;
+              padding: 10px 20px;
             }
             #row5{
                 margin-top: 400px;
@@ -83,81 +83,6 @@
             nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
             nav.navbar-findcond a { color: #f14444; }f; }    
         </style>
-        <script type="text/javascript">
-                $(document).ready(function() {
-                    $('#contactForm').bootstrapValidator({
-                        containers: '#messages',
-                        feedbackIcons: {
-                            valid: 'glyphicon glyphicon-ok',
-                            invalid: 'glyphicon glyphicon-remove',
-                            validating: 'glyphicon glyphicon-refresh'
-                        },
-                        fields: {
-                          name: {
-                                validators: {
-                                    notEmpty: {
-                                        message: 'The email address is required and cannot be empty'
-                                    },
-                                    stringLength: {
-                                        max: 50,
-                                        min:5,
-                                        message: 'name must be 5 to 50 characters long'
-                                    }
-
-                                }
-                            },
-                            email: {
-                                validators: {
-                                    notEmpty: {
-                                        message: 'The email address is required and cannot be empty'
-                                    },
-                                    emailAddress: {
-                                        message: 'The email address is not valid'
-                                    },
-                                    stringLength: {
-                                        max: 50,
-                                        min:10,
-                                        message: 'Email must be 10 to 50 characters long'
-                                    }
-
-                                }
-                            },
-                            password: {
-                                validators: {
-                                    notEmpty: {
-                                        message: 'The Password is required and cannot be empty'
-                                    },
-                                    stringLength: {
-                                        max: 15,
-                                        min:5,
-                                        message: 'Password must be 5 to 15 characters long'
-                                    },
-                                    identical: {
-                                       field: 'confirmpassword',
-                                       message: 'The password and its confirm are not the same'
-                                    }
-                                }
-                            },
-                            confirmpassword: {
-                                validators: {
-                                    notEmpty: {
-                                        message: 'Password confirmation is required and cannot be empty'
-                                    },
-                                    stringLength: {
-                                        max: 15,
-                                        min:5,
-                                        message: 'Confirm password must be 5 to 15 characters long'
-                                    },
-                                    identical: {
-                                        field: 'password',
-                                        message: 'The password and its confirm are not the same'
-                                    }
-                                }
-                            }
-                        }
-                    });
-                });
-        </script>
     </head>
     <body>
         <nav class="navbar navbar-findcond navbar-fixed-top">
@@ -172,25 +97,25 @@
                 <div class="form-group">
                     <label class="control-label">Name</label>
                     <div>
-                        <input type="text" class="form-control" name="name" value="<?php set_value('name')?>" />
+                        <input type="text" class="form-control" name="name" value="<?php if(!empty($name)){ echo $name; } ?>" placeholder="Name"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Email Address</label>
                     <div>
-                        <input type="email" class="form-control" name="email" value="<?php set_value('email')?>" />
+                        <input type="email" class="form-control" name="email" value="<?php if(!empty($email)){ echo $email; } ?>" placeholder="Email Address" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Password</label>
                     <div>
-                        <input type="password" class="form-control" name="password" />
+                        <input type="password" class="form-control" name="password" placeholder="Password"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label">confirm Password</label>
                     <div>
-                        <input type="password" class="form-control" name="confirmpassword"/>
+                        <input type="password" class="form-control" name="confirmpassword" placeholder="Confirm Password"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -215,4 +140,79 @@
         </div>
         <hr>
     </body>
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#contactForm').bootstrapValidator({
+                    containers: '#messages',
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                      name: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The email address is required and cannot be empty'
+                                },
+                                stringLength: {
+                                    max: 25,
+                                    min:5,
+                                    message: 'name must be 5 to 25 characters long'
+                                }
+
+                            }
+                        },
+                        email: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The email address is required and cannot be empty'
+                                },
+                                emailAddress: {
+                                    message: 'The email address is not valid'
+                                },
+                                stringLength: {
+                                    max: 50,
+                                    min:10,
+                                    message: 'Email must be 10 to 50 characters long'
+                                }
+
+                            }
+                        },
+                        password: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The Password is required and cannot be empty'
+                                },
+                                stringLength: {
+                                    max: 15,
+                                    min:5,
+                                    message: 'Password must be 5 to 15 characters long'
+                                },
+                                identical: {
+                                   field: 'confirmpassword',
+                                   message: 'The password and its confirm are not the same'
+                                }
+                            }
+                        },
+                        confirmpassword: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Password confirmation is required and cannot be empty'
+                                },
+                                stringLength: {
+                                    max: 15,
+                                    min:5,
+                                    message: 'Confirm password must be 5 to 15 characters long'
+                                },
+                                identical: {
+                                    field: 'password',
+                                    message: 'The password and its confirm are not the same'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
 </html>

@@ -11,21 +11,26 @@ class Homecontroller extends CI_Controller
 	*/ 
 	public function loadHomeView()
 	{
-		$this -> load->model('homemodel');
-		if($data=$this->userData()){
-			
-			if ($totalData = $this->homemodel->getTotalCount()) {
-				$content_per_page = 15; 
-				$data['totaldata'] = ceil($totalData/$content_per_page);
-				$this->load->view('userhome', $data);
+		if (isset($this->session->userdata['logged_in'])) {
+			$this -> load->model('homemodel');
+			if($data=$this->userData()){
+				
+				if ($totalData = $this->homemodel->getTotalCount()) {
+					$content_per_page = 15; 
+					$data['totaldata'] = ceil($totalData/$content_per_page);
+					$this->load->view('userhome', $data);
+				}
+			    else{
+			    	$this->load->view('404error');
+			    }
+			}    
+			else{
+				$this->load->view('404error');
 			}
-		    else{
-		    	$this->load->view('404error');
-		    }
-		}    
-		else{
-			$this->load->view('404error');
 		}
+		else{
+			$this->load->view('login');
+		}	
 	}
 
 	/**
@@ -161,6 +166,43 @@ class Homecontroller extends CI_Controller
 		else{
 			$this->load->view('404error');
 		}	
+	}
+
+	/*
+	*function for full text search
+	*@param void
+	*@return void
+	*/ 
+	public function dataSearch()
+	{
+	 	
+	 	if ($this->input->post() && $this->input->is_ajax_request()) {
+			
+			$this->form_validation->set_rules('search', 'Search', 'required|max_length[50]|alpha_neumeric|trim');
+			
+			if ($this->form_validation->run() == FALSE){   
+                echo "please enter alpha neumeric characters";
+            }
+            else
+            {
+				$search =$this->input->post('search');
+	            $this->load->model('homemodel');
+				
+				if($data=$this->homemodel->getSearchData($search))
+				{
+					foreach ($data as $value => $key) {
+						echo "<a href=\"\"><li>$key->Post</li></a>";
+					}
+				}
+				else{
+					echo "Data not found";
+				}
+            }	
+		}
+		else
+		{
+			echo "Data not found";
+		}
 	}
 }
 ?>

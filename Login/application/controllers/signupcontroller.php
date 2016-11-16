@@ -10,14 +10,16 @@ class Signupcontroller extends CI_Controller
     public function signUpData()
     {
         if ($this->input->post()){
-            $this->form_validation->set_rules('name', 'name', 'required|max_length[50]|min_length[5]|trim');
+            $this->form_validation->set_rules('name', 'name', 'required|max_length[25]|min_length[5]|trim');
             $this->form_validation->set_rules('email', 'email', 'required|max_length[50]|min_length[10]|trim|valid_email');
             $this->form_validation->set_rules('password', 'Password', 'required|max_length[15]|min_length[5]|trim|alpha_numeric');
             $this->form_validation->set_rules('confirmpassword', 'password confirmation', 'required|max_length[15]|min_length[5]|trim|alpha_numeric|matches[password]');
-            $this->session->set_userdata('email',$this->input->post('email'));    
+            $this->session->set_userdata('email',$this->input->post('email'));  
+            $data['name']= $this->input->post('name');
+            $data['email']=$this->input->post('email'); 
             /*check form validation*/ 
             if ($this->form_validation->run() == FALSE){
-                $this->load->view('signup');
+                $this->load->view('signup',$data);
             }
             else
             {      
@@ -47,13 +49,13 @@ class Signupcontroller extends CI_Controller
                         } 
                         else{
                             $this->session->set_flashdata('error','some technical error please try again');
-                            $this->load->view('signup'); 
+                            $this->load->view('signup',$data); 
                         }
                     }    
                     else
                     {
                        $this->session->set_flashdata('error','some technical error please try again');
-                       $this->load->view('signup');  
+                       $this->load->view('signup',$data);  
                     }       
                 }
             }

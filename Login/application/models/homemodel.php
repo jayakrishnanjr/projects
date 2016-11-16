@@ -35,10 +35,10 @@ class Homemodel extends CI_Model
 	*/ 
 	public function getUserDatas($email)
 	{
-	   $this->db->select('*');
-	   $this->db->where('Email',$email);
-	   $query = $this->db->get('user');
-	   return $query->result();
+	    $this->db->select('*');
+	    $this->db->where('Email',$email);
+	    $query = $this->db->get('user');
+	    return $query->result();
 	}
 
 	/**
@@ -48,10 +48,23 @@ class Homemodel extends CI_Model
 	*/ 
 	public function getFacebookUserDatas($facebookid)
 	{
-	   $this->db->select('*');
-	   $this->db->where('facebookid',$facebookid);
-	   $query = $this->db->get('user');
-	   return $query->result();
+	    $this->db->select('*');
+	    $this->db->where('facebookid',$facebookid);
+	    $query = $this->db->get('user');
+	    return $query->result();
+	}
+
+	/**
+	*function to get user details if facebook user
+	*@param email
+	*@return result
+	*/ 
+	public function getSearchData($search)
+	{
+	    $searchvalue = $search;
+	   	$this->db->where('MATCH (Post) AGAINST ("'. $searchvalue .'")', NULL, FALSE);
+	   	$query = $this->db->get('posts');
+	   	return $query->result();
 	}
 }
 ?>

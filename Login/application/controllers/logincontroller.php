@@ -40,9 +40,10 @@ class Logincontroller extends CI_Controller
         if ($this->input->post()){
             $this->form_validation->set_rules('email', 'Email', 'required|max_length[50]|min_length[10]|trim|valid_email');
             $this->form_validation->set_rules('password', 'Password', 'required|max_length[15]|min_length[5]|trim|alpha_numeric');
+            $data['email']=$this->input->post('email');
             /*check form validation*/ 
             if ($this->form_validation->run() == FALSE){   
-                $this->load->view('login');
+                $this->load->view('login',$data);
             }
             else
             {
@@ -63,7 +64,7 @@ class Logincontroller extends CI_Controller
                                 $credentials['logged_in']= TRUE;
                                 $credentials['user_type']= 1;  
                                 $this->sessionData($credentials);
-                                redirect('home'); 
+                                $this->checkSession();
                             }
                             else{
                                 $this->load->view("accountblock");
@@ -77,13 +78,13 @@ class Logincontroller extends CI_Controller
                     else
                     {
                       $this->session->set_flashdata('errors','Password you entered is wrong');
-                      $this->load->view('login');
+                      $this->load->view('login',$data);
                     }  
                 }
                 else
                 {
                     $this->session->set_flashdata('errors','Email not exist!');
-                    redirect('login');
+                    $this->load->view('login',$data);
                 }
             }
         }
