@@ -31,7 +31,8 @@ class Signupcontroller extends CI_Controller
                 'Password' => md5($this->input->post('password')),
                 'Activationcode' => $activation,
                 'SignupTime'=>$signup,
-                'Status'=>2
+                'Status'=>2,
+                'user_type'=>1
                 );
                 $this->load->model('signupmodel');
                 /*check if email exist*/ 

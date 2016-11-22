@@ -26,7 +26,8 @@ class Facebooklogincontroller extends CI_Controller
                                'email' =>$data['user_profile']['email'],
                                'facebookid' => $data['user_profile']['id'],
                                'SignupTime'=>$signup,
-                               'Status'=>2
+                               'Status'=>2,
+                               'user_type'=>2
                            );
 
             $this->load->model('facebookmodel');

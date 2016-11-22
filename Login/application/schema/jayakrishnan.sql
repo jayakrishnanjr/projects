@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2016 at 02:52 PM
+-- Generation Time: Nov 22, 2016 at 05:36 PM
 -- Server version: 5.5.53-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.20
 
@@ -53,8 +53,12 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `timestamp` int(25) NOT NULL,
   `date` varchar(50) NOT NULL,
   `status` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
+  PRIMARY KEY (`id`),
+  KEY `Post` (`Post`),
+  FULLTEXT KEY `Post_2` (`Post`),
+  FULLTEXT KEY `Post_3` (`Post`),
+  FULLTEXT KEY `Post_4` (`Post`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
 
 --
 -- Dumping data for table `posts`
@@ -177,17 +181,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Activationcode` varchar(150) DEFAULT NULL,
   `SignupTime` varchar(50) NOT NULL,
   `Status` int(11) NOT NULL,
+  `user_type` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`Id`, `name`, `Email`, `facebookid`, `Password`, `Activationcode`, `SignupTime`, `Status`) VALUES
-(5, 'Jayakrishnan', 'jrjayakrishnan6@gmail.com', NULL, '701c998aaf2f5b1ae2c36f9797c983fc', NULL, '2016-11-14 05:25:56pm', 2),
-(9, 'Kuttan Thamburan', NULL, '129607287516862', NULL, NULL, '2016-11-15 01:48:25pm', 2),
-(10, 'Jaya Krishnan', NULL, '1161133374006609', NULL, NULL, '2016-11-15 02:17:34pm', 2);
+INSERT INTO `user` (`Id`, `name`, `Email`, `facebookid`, `Password`, `Activationcode`, `SignupTime`, `Status`, `user_type`) VALUES
+(11, 'Jayakrishnan', 'jrjayakrishnan6@gmail.com', NULL, '701c998aaf2f5b1ae2c36f9797c983fc', NULL, '2016-11-22 01:31:54pm', 2, 1),
+(12, 'Jaya Krishnan', NULL, '1161133374006609', NULL, NULL, '2016-11-22 01:32:26pm', 2, 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
