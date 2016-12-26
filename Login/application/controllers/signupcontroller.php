@@ -78,10 +78,10 @@ class Signupcontroller extends CI_Controller
         $config['smtp_host'] = "ssl://smtp.gmail.com"; /*host name of gmail*/
         $config['smtp_port'] = "465";   /*smtp port number*/
         /*user's mailid and password configuartion*/ 
-        $config['smtp_user'] = "jrjayakrishnan6@gmail.com"; 
+        $config['smtp_user'] = ""; 
 
 
-        $config['smtp_pass'] = "Sreekrishna6*";       /*enter the password of gmail here */
+        $config['smtp_pass'] = "";       /*enter the password of gmail here */
 
 
         $config['charset'] = "utf-8";
